@@ -7,11 +7,23 @@ class ActorsController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("path_id")
+    @the_id = params.fetch("path_id")
 
-    matching_actors = Actor.where({ :id => the_id })
+    matching_actors = Actor.where({ :id => @the_id })
     @the_actor = matching_actors.at(0)
       
     render({ :template => "actor_templates/show" })
+  end
+
+  def modify
+    id_path = params.fetch("path_id")
+    record = Actor.where({ :id => id_path }).first
+    record.name = params.fetch("query_name")
+    record.dob = params.fetch("query_dob")
+    record.bio = params.fetch("query_bio")
+    record.image = params.fetch("query_image")
+    record.save
+
+    redirect_to("/actors/#{id_path}")
   end
 end
