@@ -6,7 +6,13 @@
   Go back
 </a>
 <div>
-<a href="/delete_actor/<%= @the_actor.id %>">Delete actor</a>
+<form action ="/delete_actor/<%=@the_actor.id%>" method = "post">
+  <label for="delete_actor_input">Delete actor</label>
+  <input type ="hidden" id="delete_actor_input" name="delete_me" value ="<%=@the_actor.id%>">
+  <button type="submit" name="submit_param" value="submit_value" class = "link-button">
+  </button>
+</form>
+
 <!--Returns to the list of actors-->
 </div>
 

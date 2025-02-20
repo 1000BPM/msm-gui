@@ -28,9 +28,22 @@ class ActorsController < ApplicationController
   end
 
   def delete
-    id_path = params.fetch("path_id")
-    record_delete = Actor.where({:id => id_path}).first
-    record_delete.destroy
+    @id_path = params.fetch("delete_me")
+    @record_delete = Actor.where({:id => @id_path}).first
+    # record_delete.destroy
     
+    render(:template => "actor_templates/what")
+    # redirect_to("/actors")
+  end
+
+  def create
+    record = Actor.new
+    record.name = params.fetch("query_name")
+    record.dob = params.fetch("query_dob")
+    record.bio = params.fetch("query_bio")
+    record.image = params.fetch("query_image")
+    record.save
+
+    redirect_to("/actors")
   end
 end
