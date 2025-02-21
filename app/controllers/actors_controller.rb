@@ -28,12 +28,12 @@ class ActorsController < ApplicationController
   end
 
   def delete
-    @id_path = params.fetch("delete_me")
+    @id_path = params.fetch("path_id")
     @record_delete = Actor.where({:id => @id_path}).first
-    # record_delete.destroy
+    @record_delete.destroy
     
-    render(:template => "actor_templates/what")
-    # redirect_to("/actors")
+    # render(:template => "actor_templates/what")
+    redirect_to("/actors")
   end
 
   def create

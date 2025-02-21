@@ -52,10 +52,10 @@ class DirectorsController < ApplicationController
   def delete
     @id_path = params.fetch("delete_me")
     @record_delete = Director.where({:id => @id_path}).first
-    # record_delete.destroy
+    @record_delete.destroy
     
-    render(:template => "actor_templates/what")
-    # redirect_to("/actors")
+    # render(:template => "actor_templates/what")
+    redirect_to("/directors")
   end
 
   def create

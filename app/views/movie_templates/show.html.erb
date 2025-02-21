@@ -5,6 +5,9 @@
 <a href="/movies">
   Go back
 </a>
+<div>
+  <a href="/delete_movie/<%= @the_movie.id %>">Delete movie</a>
+</div>
 
 <hr>
 <form action="/insert_movie" method="post">
@@ -51,7 +54,7 @@
     <input type="text" id="director_id_box" name="query_director_id" value="<%=@the_movie.director_id%>">
   </div>
   <button>
-    Create movie
+    Update movie
   </button>
 </form>
 
