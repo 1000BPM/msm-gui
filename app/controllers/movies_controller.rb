@@ -17,7 +17,8 @@ class MoviesController < ApplicationController
 
   def modify
     id_path = params.fetch("path_id")
-    record = Movie.where({ :id => id_path }).first
+    record = Movie.where({ :id => id_path })
+    record = record.first
     record.title = params.fetch("query_name")
     record.year = params.fetch("query_yr")
     record.duration = params.fetch("query_duration")

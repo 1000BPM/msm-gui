@@ -50,7 +50,7 @@ class DirectorsController < ApplicationController
   end
 
   def delete
-    @id_path = params.fetch("delete_me")
+    @id_path = params.fetch("path_id")
     @record_delete = Director.where({:id => @id_path}).first
     @record_delete.destroy
     
